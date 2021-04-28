@@ -1,5 +1,6 @@
 $("#btnsave").click(function(){
-    console.log("Save button clicked");
+    //console.log("Save button clicked");
+    output = "";
     let nm = $("#nameid").val();
     let em = $("#emailid").val();
     let pw = $("#passwordid").val();
@@ -15,8 +16,19 @@ $("#btnsave").click(function(){
             data:mydata,
             success:function(response){
                 //console.log(response);
+                st_data = response.student_data;
                 if (response.status == 'save'){
-                    console.log('Form submitted successfully')
+                    console.log('Form submitted successfully');
+                    //console.log(response.student_data);
+                    for (i=0; i<st_data.length; i++){
+                        output += "<tr><td>" + st_data[i].id + "</td><td>" +
+                        st_data[i].name + "</td><td>" + st_data[i].email + "</td><td>" +
+                        st_data[i].password + 
+                        "</td><td> <input type='button' class='btn btn-warning btn-sm' value='Edit' data-sid="+ st_data[i].id + " />" +
+                        "<input type='button' class='btn btn-danger btn-sm' value='Delete' data-sid="+ st_data[i].id + " />";
+                    }
+                    $("#tbody").html(output);
+                    $("form")[0].reset();
                 }
             }
         })

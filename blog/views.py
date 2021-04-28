@@ -20,6 +20,9 @@ def save_data(request):
             password = request.POST['password']
             usr = User(name=name, email=email, password=password)
             usr.save()
-            return JsonResponse({'status': 'save'})
+            stud = User.objects.values()
+            #print(stud)
+            student_data = list(stud)
+            return JsonResponse({'status': 'save', 'student_data': student_data})
         else:
             return JsonResponse({'status': 0})
