@@ -24,8 +24,8 @@ $("#btnsave").click(function(){
                         output += "<tr><td>" + st_data[i].id + "</td><td>" +
                         st_data[i].name + "</td><td>" + st_data[i].email + "</td><td>" +
                         st_data[i].password + 
-                        "</td><td> <input type='button' class='btn btn-warning btn-sm' value='Edit' data-sid="+ st_data[i].id + " />" +
-                        "<input type='button' class='btn btn-danger btn-sm' value='Delete' data-sid="+ st_data[i].id + " />";
+                        "</td><td> <input type='button' class='btn btn-warning btn-sm btn-edit' value='Edit' data-sid="+ st_data[i].id + " />" +
+                        "<input type='button' class='btn btn-danger btn-sm btn-del' value='Delete' data-sid="+ st_data[i].id + " />";
                     }
                     $("#tbody").html(output);
                     $("form")[0].reset();
@@ -34,6 +34,13 @@ $("#btnsave").click(function(){
         })
     }
 });
+
+
+$("#tbody").on("click", ".btn-del", function(){
+    console.log('Delete Button Clicked');
+    let id = $(this).attr("data-sid");
+    console.log(id)
+})
 
 
 

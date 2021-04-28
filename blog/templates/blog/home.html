@@ -40,8 +40,8 @@
                                 <td>{{ student.email }}</td>
                                 <td>{{ student.password }}</td>
                                 <td>
-                                    <input type="button" data-sid="{{student.id}}" class="btn btn-warning btn-sm" value="Edit">
-                                    <input type="button" data-sid="{{student.id}}" class="btn btn-danger btn-sm" value="Delete">
+                                    <input type="button" data-sid="{{student.id}}" class="btn btn-warning btn-sm btn-edit" value="Edit">
+                                    <input type="button" data-sid="{{student.id}}" class="btn btn-danger btn-sm btn-del" value="Delete">
                                 </td>
                             </tr>
                         {% endfor %}
