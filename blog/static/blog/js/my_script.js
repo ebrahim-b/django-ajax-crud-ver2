@@ -38,8 +38,17 @@ $("#btnsave").click(function(){
 
 $("#tbody").on("click", ".btn-del", function(){
     console.log('Delete Button Clicked');
+    let csr = $("input[name=csrfmiddlewaretoken").val();
     let id = $(this).attr("data-sid");
     console.log(id)
+    $.ajax({
+        url: '/delete/',
+        type: 'POST',
+        data:{sid:id, csrfmiddlewaretoken: csr},
+        success: function(respomse){
+            console.log('Deleted')
+        }
+    })
 })
 
 

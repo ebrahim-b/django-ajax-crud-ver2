@@ -26,3 +26,11 @@ def save_data(request):
             return JsonResponse({'status': 'save', 'student_data': student_data})
         else:
             return JsonResponse({'status': 0})
+
+
+def delete_data(request):
+    if request.method == 'POST':
+        id = request.POST.get('sid')
+        usr = User.objects.get(pk=id)
+        usr.delete()
+        return JsonResponse({'status':1})
